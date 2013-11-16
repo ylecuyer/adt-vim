@@ -1,0 +1,14 @@
+Launch Android SDK Manager `AdtSDKManager`
+
+Launch Android AVD Manager `AdtAVDManager`
+
+Create a new project `AdtCreateProject`
+
+Build and Run current project `AdtBuildAndRunDebug`
+
+  Only Build `AdtBuild`
+  Only Install `AdtInstall`
+  Only Run `AdtRun`
+
+Go to ressource `AdtGoToRessource`
+
