@@ -202,3 +202,17 @@ function! AdtBuildAndRunDebug()
   call AdtRun()
 
 endfunction
+
+function! AdtGoToRessource()
+
+  exec "normal! ?(\<CR>lv/)\<CR>h\"ey"
+
+  let var = getreg("e")
+
+  let var = substitute(var, "R", "res", "") 
+
+  let var = substitute(var, "[.]", "/", "g")
+
+  exec "e ".var.".xml"
+
+endfunction
