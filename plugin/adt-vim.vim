@@ -220,7 +220,7 @@ endfunction
 
 command! AdtCreateProject call AdtCreateProject() 
 command! AdtBuildAndRunDebug call AdtBuildAndRunDebug()
-command! AdtGoToRessource call AdtGoToRessource
+command! AdtGoToRessource call AdtGoToRessource()
 command! AdtBuild call AdtBuild()
 command! AdtInstall call AdtInstall()
 command! AdtRun call AdtRun()
