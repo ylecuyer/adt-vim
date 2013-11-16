@@ -22,6 +22,12 @@ function! AdtAVDManager()
 endfunction
 
 
+function! AdtGetProjectName()
+
+  return system("cat build.xml|grep \"<project\" | sed 's/.*name=\"\\([^\"]*\\)\".*/\\1/' | tr -d '\\n'")
+
+endfunction
+
 function! AdtBuild()
   echo "Building in Debug mode..."
   let output = system("ant debug")
@@ -40,14 +46,20 @@ endfunction
 
 function! AdtInstall()
   echo "Installing..."
-  let output = system("ant installd")
 
+  let devices = AdtGetDeviceList()
+  let device_number = AdtAskWhichDevice()
 
-  if output =~ "BUILD SUCCESSFUL"
-    echo "Installed successfuly"
+  let project_name = AdtGetProjectName()
+
+  let output = system(g:adb." -s ".devices[device_number]." install -r bin/".project_name."-debug.apk")
+
+  if output =~ "Success"
+    echo "Install Successful"
   else
+    echo "Something wrong occured"
     echo output
-  end
+  endif
 
 endfunction
 
@@ -60,7 +72,7 @@ function! AdtRun()
   let main_activity = AdtGetMainActivity()
 
   silent echom "Launching ".main_activity
-  silent exec "!".g:adb." -s ".devices[device_number]." shell am start -n ".package."/.".main_activity
+  silent system(g:adb." -s ".devices[device_number]." shell am start -n ".package."/.".main_activity)
   silent echom "Launched ".main_activity
   
 
