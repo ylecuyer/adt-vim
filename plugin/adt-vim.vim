@@ -216,3 +216,13 @@ function! AdtGoToRessource()
   exec "e ".var.".xml"
 
 endfunction
+
+
+command! AdtCreateProject call AdtCreateProject() 
+command! AdtBuildAndRunDebug call AdtBuildAndRunDebug()
+command! AdtGoToRessource call AdtGoToRessource
+command! AdtBuild call AdtBuild()
+command! AdtInstall call AdtInstall()
+command! AdtRun call AdtRun()
+command! AdtSDKManager call AdtSDKManager()
+command! AdtAVDManager call AdtAVDManager()
