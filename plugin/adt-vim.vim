@@ -91,7 +91,10 @@ function! AdtAskWhichDevice()
     let i += 1
     echo i.": ".device." [Android ".AdtGetDeviceVersion(device)."]"
   endfor
-  let device_number = input("Which device: ")
+  let device_number = input("Which device [1]: ")
+  if strlen(device_number) == 0
+    let device_number = 1
+  endif
   call inputrestore()
 
   return str2nr(device_number) - 1
